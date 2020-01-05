@@ -1,0 +1,5 @@
+https://finance.yahoo.com/quote/BTC-USD?p=BTC-USD&.tsrc=fin-srch
+https://finance.yahoo.com/quote/GE?p=GE&.tsrc=fin-tre-srch
+https://finance.yahoo.com/quote/AAPL?p=AAPL&.tsrc=fin-srch
+https://finance.yahoo.com/quote/DIS?p=DIS&.tsrc=fin-srch
+https://finance.yahoo.com/quote/SNDE?p=SNDE&.tsrc=fin-srch
