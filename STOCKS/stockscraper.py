@@ -12,7 +12,7 @@ arr = []
 prices = []
 
 # use readline() to read the first line.
-f = open('stocks.txt')
+f = open('stockurl.txt')
 line = f.readline()
 
 #While file is not empty, keep reading lines,appending to arr.
@@ -26,7 +26,7 @@ if(os.path.exists('stockdata.csv') == True):
     f = csv.writer(open("stockdata.csv","a"))
 else:
     f = csv.writer(open("stockdata.csv","w"))
-    f.writerow(["STOCKNAME","PRICE","DATE"])
+    f.writerow(["STOCK_NAME","PRICE","DATE"])
 
 #Request webpage to extract stock data and write to csv file.
 for i in range(len(arr)):
