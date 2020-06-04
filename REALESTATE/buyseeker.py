@@ -33,11 +33,22 @@ urls.close()
 
 
 with open('buyrecon.txt') as urls:
-    house_url = urls.read().splitlines()
-    for line in house_url:
+    house_url_recon = urls.read().splitlines()
+    for line in house_url_recon:
+        print(line)
         recon_houses.append(line)
-urls.close()
+urls.close() 
 
+result = list(set(houses) - set(recon_houses))
+print(result)
+
+if not result:
+    print("no URL's added since last run")
+else:
+    f = csv.writer(open("buyrecon.txt","a",newline=''))
+    
+    for i in range(len(result)):
+time.sleep(100)
 
 if houses not in recon_houses:
     print(recon_houses)
@@ -64,13 +75,20 @@ webpage = urlopen(req).read()
 soup = BeautifulSoup(webpage, 'lxml')
 html = soup.prettify('utf-8')
 
+
+
+
+
+test = soup.findAll('span')
+market_status = test[97].text
+
 # Extraction of DATA
-market_status = (soup.find('span', {'class' : 'sc-fOICqy iEWEMc ds-status-details'}))
+market_status = (soup.find('span', {'class' : 'sc-bGbJRg fFPekb ds-status-details'}))
 metaData = (soup.findAll('meta'))
 facts = soup.findAll('span', attrs={'class': 'ds-body ds-home-fact-value'})
-views = (soup.find('div', {'class' : 'sc-iomxrj duguPL'}))
+views = (soup.find('div', {'class' : 'sc-gVLVqr ftFSjV'}))
 
-
+print(views)
 # Cleaning up market status and setting boolean, appending to final data list
 if market_status.text == "For sale":
     market_status = "y"
@@ -78,6 +96,7 @@ else:
     market_status = "n"
 finaldata.append(market_status)
 
+print(market_status)
 
 # cleaning up Price data 
 finaldata.append(float(metaData[31].get('content')))
@@ -143,9 +162,9 @@ for i in range(num_elems):
     finaldata.append(int(final_stats[i]))
 
 print(finaldata)
-time.sleep(110)
 
-
+f = csv.writer(open("buydata.csv","a"))
+f.writerow(finaldata)
 
 #DATA CLEANUP 
 #splitting = str(rawdata)
